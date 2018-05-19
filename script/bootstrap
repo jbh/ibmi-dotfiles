@@ -54,7 +54,7 @@ install_dotfiles () {
     backup_all=false
     skip_all=false
 
-    for source in `find $DOTFILES_ROOT -name \*.symlink`
+    for source in `/QOpenSys/pkgs/bin/find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
     do
         dest="$HOME/.`basename \"${source%.*}\"`"
 
