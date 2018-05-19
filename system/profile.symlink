@@ -1,0 +1,7 @@
+/QSYS.LIB/QSHELL.LIB/UNAME.PGM > /dev/null 2>&1
+
+if [ $? != 0 -a "$SHELL" != "/QOpenSys/pkgs/bin/bash" ]
+then
+  exec /QOpenSys/pkgs/bin/bash
+fi
+

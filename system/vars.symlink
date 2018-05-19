@@ -1,0 +1,7 @@
+# .vars
+# vim:syntax=sh
+
+export JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk80/64bit
+export TERM=xterm
+export PAGER=/QOpenSys/pkgs/bin/less
+

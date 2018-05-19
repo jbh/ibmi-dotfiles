@@ -1,0 +1,30 @@
+# .aliases
+# vim:syntax=sh
+
+# Reload bash aliases
+alias reload="source ~/.bash_profile"
+
+# enable color support of ls and also add handy aliases
+if [ -x /QOpenSys/pkgs/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='/QOpenSys/pkgs/bin/ls --color=auto'
+    alias dir='/QOpenSys/pkgs/bin/dir --color=auto'
+    alias vdir='/QOpenSys/pkgs/bin/vdir --color=auto'
+
+    alias grep='/QOpenSys/pkgs/bin/grep --color=auto'
+    alias fgrep='/QOpenSys/pkgs/bin/fgrep --color=auto'
+    alias egrep='/QOpenSys/pkgs/bin/egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='/QOpenSys/pkgs/bin/ls -alF'
+alias la='/QOpenSys/pkgs/bin/ls -A'
+alias l='/QOpenSys/pkgs/bin/ls -CF'
+
+# Directory Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+

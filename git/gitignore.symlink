@@ -1,0 +1,10 @@
+# Development environments (backup files)
+.DS_Store
+/.idea/
+/node_modules/
+.sass-cache
+tmp/*
+.svn
+*~
+*.swp
+*.rbc

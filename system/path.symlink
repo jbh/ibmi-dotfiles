@@ -1,0 +1,5 @@
+# .path
+# vim:syntax=sh
+
+PATH=$PATH:/usr/local/zendsvr6/bin:/QOpenSys/pkgs/bin:~/bin
+
