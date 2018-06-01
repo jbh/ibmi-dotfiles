@@ -2,6 +2,7 @@
 
 if [ $? != 0 -a "$SHELL" != "/QOpenSys/pkgs/bin/bash" ]
 then
-  exec /QOpenSys/pkgs/bin/bash
+    /QOpenSys/usr/bin/qsh -c "db2 \"CALL QSYS2.SET_PASE_SHELL_INFO('*CURRENT', '/QOpenSys/pkgs/bin/bash');\""
+    exec /QOpenSys/pkgs/bin/bash
 fi
 
