@@ -1,5 +1,25 @@
-## Dotfiles
-
+# Dotfiles
 IBM i Dotfiles
 
-These dotfiles require that [IBM i Open Source Environment](https://bitbucket.org/ibmi/opensource/src/master/docs/yum) be installed. This will install BASH and yum, which are required for these dotfiles. You will also need to install `findutils`. `yum install findutils`
+## Requirements
+These dotfiles require that the
+[IBM i Open Source Environment](https://sobo.red/ibmi-rpms) be installed. You
+will also need to install `findutils`.
+
+**Install findutils**
+
+```
+yum install findutils
+```
+
+## Dotfiles Installation
+```
+ssh <username>@<ibmi-ip>
+mkdir /home/<username>/git && cd $_
+git clone git@github.com:jbh/ibmi-dotfiles.git
+./ibmi-dotfiles/script/bootstrap
+```
+
+The bootstrap script will step you through installing the dotfiles. If a dotfile
+already exists, you will be prompted and asked to overwrite, backup, or skip the
+file.
