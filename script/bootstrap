@@ -47,9 +47,9 @@ link_files () {
     success "linked $1 to $2"
 }
 
-move_files () {
-    mv $1 $2
-    success "moved $1 to $2"
+copy_files () {
+    cp -r $1 $2
+    success "copied $1 to $2"
 }
 
 install_dotfiles () {
@@ -107,13 +107,13 @@ install_dotfiles () {
 
             if [[ "$skip" == "false" ]] && [[ "$skip_all" == "false" ]]
                 then
-                move_files ${source} ${dest}
+                copy_files ${source} ${dest}
             else
                 success "skipped ${source}"
             fi
 
         else
-            move_files ${source} ${dest}
+            copy_files ${source} ${dest}
         fi
 
     done
