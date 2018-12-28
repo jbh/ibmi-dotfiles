@@ -1,25 +1,42 @@
-# Dotfiles
-IBM i Dotfiles
+# IBM i Dotfiles
 
 ## Requirements
 These dotfiles require that the
-[IBM i Open Source Environment](https://sobo.red/ibmi-rpms) be installed. You
-will also need to install `findutils`.
+[IBM i Open Source Environment](https://sobo.red/ibmi-rpms) (yum) be installed.
 
-**Install findutils**
+## IBM i Dotfiles Installation
+
+### Add SoBored RPM Repo to yum
+Use your favorite text editor and create the file `/QOpenSys/etc/yum/repos.d/sobored.repo` with these contents:
 
 ```
-yum install findutils
+[sobored]
+name=sobored
+baseurl=http://rpms.sobo.red/ibmi/ppc64/
+enabled=1
+gpgcheck=0
 ```
 
-## Dotfiles Installation
+### Install `ibmi-dotfiles` via yum
+
 ```
-ssh <username>@<ibmi-ip>
-mkdir /home/<username>/git && cd $_
-git clone git@github.com:jbh/ibmi-dotfiles.git
-./ibmi-dotfiles/script/bootstrap
+yum install ibmi-dotfiles
 ```
 
-The bootstrap script will step you through installing the dotfiles. If a dotfile
-already exists, you will be prompted and asked to overwrite, backup, or skip the
-file.
+## IBM i Dotfiles Usage
+
+`ibmi-dotfiles` are used from the command line. BASH suggested, as these dotfiles are configured for BASH.
+
+### Copy IBM i Dotfiles to current user's home directory.
+
+```
+ibmi-dotfiles
+```
+
+### Copy IBM i Dotfiles to specific directory.
+
+Please use the full path here. Relative paths are untested.
+
+```
+ibmi-dotfiles --install-path /desired/install/path
+```
