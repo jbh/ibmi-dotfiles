@@ -2,7 +2,7 @@
 #
 # bootstrap installs things.
 
-DOTFILES_ROOT="`pwd`"
+DOTFILES_ROOT="/QOpenSys/etc/ibmi-dotfiles"
 
 set -e
 
@@ -27,7 +27,7 @@ fail () {
 }
 
 setup_gitconfig () {
-    if ! [ -f git/gitconfig.symlink ]
+    if ! [[ -f "${DOTFILES_ROOT}git/gitconfig.symlink" ]]
         then
         info 'setup gitconfig'
 
@@ -36,7 +36,7 @@ setup_gitconfig () {
         user ' - What is your github author email?'
         read -e git_authoremail
 
-        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink.example > git/gitconfig.symlink
+        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" "${DOTFILES_ROOT}/git/gitconfig.symlink.example" > "${DOTFILES_ROOT}/git/gitconfig.symlink"
 
         success 'gitconfig'
     fi
@@ -47,6 +47,11 @@ link_files () {
     success "linked $1 to $2"
 }
 
+move_files () {
+    mv $1 $2
+    success "moved $1 to $2"
+}
+
 install_dotfiles () {
     info 'installing dotfiles'
 
@@ -54,20 +59,20 @@ install_dotfiles () {
     backup_all=false
     skip_all=false
 
-    for source in `/QOpenSys/pkgs/bin/find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
+    for source in `/QOpenSys/pkgs/bin/find ${DOTFILES_ROOT} -maxdepth 2 -name \*.symlink`
     do
         dest="$HOME/.`basename \"${source%.*}\"`"
 
-        if [ -f $dest ] || [ -d $dest ]
+        if [[ -f ${dest} ]] || [[ -d ${dest} ]]
             then
 
             overwrite=false
             backup=false
             skip=false
 
-            if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+            if [[ "$overwrite_all" == "false" ]] && [[ "$backup_all" == "false" ]] && [[ "$skip_all" == "false" ]]
                 then
-                user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+                user "File already exists: `basename ${source}`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
                 read -n 1 action
 
                 case "$action" in
@@ -88,27 +93,27 @@ install_dotfiles () {
                 esac
             fi
 
-            if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
+            if [[ "$overwrite" == "true" ]] || [[ "$overwrite_all" == "true" ]]
                 then
-                rm -rf $dest
-                success "removed $dest"
+                rm -rf ${dest}
+                success "removed ${dest}"
             fi
 
-            if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
+            if [[ "$backup" == "true" ]] || [[ "$backup_all" == "true" ]]
                 then
-                mv $dest $dest\.backup
-                success "moved $dest to $dest.backup"
+                mv ${dest} ${dest}\.backup
+                success "moved ${dest} to ${dest}.backup"
             fi
 
-            if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
+            if [[ "$skip" == "false" ]] && [[ "$skip_all" == "false" ]]
                 then
-                link_files $source $dest
+                move_files ${source} ${dest}
             else
-                success "skipped $source"
+                success "skipped ${source}"
             fi
 
         else
-            link_files $source $dest
+            move_files ${source} ${dest}
         fi
 
     done
