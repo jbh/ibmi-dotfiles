@@ -6,6 +6,34 @@ DOTFILES_ROOT="/QOpenSys/etc/ibmi-dotfiles"
 
 set -e
 
+install_path=${HOME};
+cmd=`basename "$0"`
+
+print_use () {
+    echo "Use: ${cmd} [--install-path <path>]"
+    echo "e.g.: ${cmd} --install-path /home/username"
+    exit 1
+}
+
+while [[ $# -gt 0 ]]
+do
+    key="${1}"
+    case ${key} in
+    -i|--install-path)
+        install_path="${2}"
+        shift # past argument
+        shift # past value
+        ;;
+    -h|--help)
+        print_use
+        shift # past argument
+        ;;
+    *)    # unknown option
+        shift # past argument
+        ;;
+    esac
+done
+
 echo ''
 
 info () {
@@ -36,7 +64,8 @@ setup_gitconfig () {
         user ' - What is your github author email?'
         read -e git_authoremail
 
-        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" "${DOTFILES_ROOT}/git/gitconfig.symlink.example" > "${DOTFILES_ROOT}/git/gitconfig.symlink"
+        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" \
+        "${DOTFILES_ROOT}/git/gitconfig.symlink.example" > "${DOTFILES_ROOT}/git/gitconfig.symlink"
 
         success 'gitconfig'
     fi
@@ -61,7 +90,7 @@ install_dotfiles () {
 
     for source in `/QOpenSys/pkgs/bin/find ${DOTFILES_ROOT} -maxdepth 2 -name \*.symlink`
     do
-        dest="$HOME/.`basename \"${source%.*}\"`"
+        dest="${install_path}/.`basename \"${source%.*}\"`"
 
         if [[ -f ${dest} ]] || [[ -d ${dest} ]]
             then
@@ -72,7 +101,8 @@ install_dotfiles () {
 
             if [[ "$overwrite_all" == "false" ]] && [[ "$backup_all" == "false" ]] && [[ "$skip_all" == "false" ]]
                 then
-                user "File already exists: `basename ${source}`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+                user "File already exists: `basename ${source}`, what do you want to do?
+                [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
                 read -n 1 action
 
                 case "$action" in
