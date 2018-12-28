@@ -17,6 +17,12 @@ enabled=1
 gpgcheck=0
 ```
 
+Just to be safe, make sure you clean your metadata:
+
+```
+yum clean metadata
+```
+
 ### Install `ibmi-dotfiles` via yum
 
 ```
