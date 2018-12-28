@@ -11,4 +11,3 @@ export HISTIGNORE="ls:ls *:llcd:cd -:pwd;exit:date:* --help"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-

@@ -2,10 +2,10 @@
 # vim:syntax=sh
 
 # Reload bash aliases
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.profile"
 
 # enable color support of ls and also add handy aliases
-if [ -x /QOpenSys/pkgs/bin/dircolors ]; then
+if [[ -x /QOpenSys/pkgs/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='/QOpenSys/pkgs/bin/ls --color=auto'
     alias dir='/QOpenSys/pkgs/bin/dir --color=auto'
@@ -17,9 +17,9 @@ if [ -x /QOpenSys/pkgs/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='/QOpenSys/pkgs/bin/ls -alF'
-alias la='/QOpenSys/pkgs/bin/ls -A'
-alias l='/QOpenSys/pkgs/bin/ls -CF'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Directory Navigation
 alias ..='cd ..'
@@ -27,4 +27,3 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
-

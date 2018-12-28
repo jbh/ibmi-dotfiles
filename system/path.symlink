@@ -1,5 +1,27 @@
 # .path
 # vim:syntax=sh
 
-PATH=$PATH:/usr/local/zendsvr6/bin:/QOpenSys/pkgs/bin:~/bin
+# set PATH so it includes user's private bin if it exists
+if [[ -d "$HOME/bin" ]] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
+# set PATH so it includes user's private bin if it exists
+if [[ -d "$HOME/.local/bin" ]] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# set PATH so it includes Zend PHP 5.6 bin if it exists
+if [[ -d "/usr/local/zendsvr6/bin" ]] ; then
+    PATH="/usr/local/zendsvr6/bin:$PATH"
+fi
+
+# set PATH so it includes Zend PHP 7 bin if it exists
+if [[ -d "/usr/local/zendphp7/bin" ]] ; then
+    PATH="/usr/local/zendphp7/bin:$PATH"
+fi
+
+# set PATH so it includes QOpenSys bin if it exists
+if [[ -d "/QOpenSys/pkgs/bin" ]] ; then
+    PATH="/QOpenSys/pkgs/bin:$PATH"
+fi

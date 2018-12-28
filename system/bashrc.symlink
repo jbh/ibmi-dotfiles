@@ -8,7 +8,7 @@ export EDITOR="vim"
 function _source_if_exists {
     local file ;
     for file ; do
-        [ -f "${file}" ] && source "${file}" ;
+        [[ -f "${file}" ]] && source "${file}" ;
     done
 }
 
