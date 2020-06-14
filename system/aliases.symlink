@@ -6,7 +6,7 @@ alias reload="source ~/.profile"
 
 # enable color support of ls and also add handy aliases
 if [[ -x /QOpenSys/pkgs/bin/dircolors ]]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~/.dircolors && eval "$(/QOpenSys/pkgs/bin/dircolors -b ~/.dircolors)" || eval "$(/QOpenSys/pkgs/bin/dircolors -b)"
     alias ls='/QOpenSys/pkgs/bin/ls --color=auto'
     alias dir='/QOpenSys/pkgs/bin/dir --color=auto'
     alias vdir='/QOpenSys/pkgs/bin/vdir --color=auto'
