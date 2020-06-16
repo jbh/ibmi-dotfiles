@@ -1,13 +1,10 @@
 # .history
 # vim:syntax=sh
 
-# Larger bash history (allow 32³ entries; default is 500)
-export HISTSIZE=32768
+# Unlimited history
+export HISTSIZE=1
 export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoreboth
-
-# Ignore some commands in history
-export HISTIGNORE="ls:ls *:llcd:cd -:pwd;exit:date:* --help"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
