@@ -1,11 +1,14 @@
-%define name       ibmi-dotfiles
-%define release    0
-%define version    0.3
+%define name           ibmi-dotfiles
+%define release        0
+%define version        1.0
+%define git_completion https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+%define git_prompt     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 Name:       %{name}
 Version:    %{version}
 Release:    %{release}
-Requires:   /QOpenSys/pkgs/bin/find
+BuildArch:  noarch
+Requires:   /QOpenSys/pkgs/bin/find /QOpenSys/pkgs/bin/curl
 Source:     %{name}-%{version}.tar.gz
 Summary:    Shell configuration files for IBM i.
 License:    MIT
@@ -14,13 +17,15 @@ License:    MIT
 Shell configuration files for IBM i.
 
 %prep
-%setup -q
+%setup
 
 %install
 mkdir -p %{buildroot}/QOpenSys/pkgs/bin
-install -m 755 ./ibmi-dotfiles/script/bootstrap %{buildroot}/QOpenSys/pkgs/bin/ibmi-dotfiles
+install -m 755 ./script/bootstrap %{buildroot}/QOpenSys/pkgs/bin/ibmi-dotfiles
 mkdir -p %{buildroot}/QOpenSys/etc/ibmi-dotfiles
-cp -r ./ibmi-dotfiles/* %{buildroot}/QOpenSys/etc/ibmi-dotfiles
+/QOpenSys/pkgs/bin/curl %{git_completion} -o %{buildroot}/QOpenSys/etc/ibmi-dotfiles/git-completion.bash
+/QOpenSys/pkgs/bin/curl %{git_prompt} -o %{buildroot}/QOpenSys/etc/ibmi-dotfiles/git-prompt.sh
+cp -r ./* %{buildroot}/QOpenSys/etc/ibmi-dotfiles
 
 %files
 %defattr(-, qsys, *none)
@@ -28,4 +33,6 @@ cp -r ./ibmi-dotfiles/* %{buildroot}/QOpenSys/etc/ibmi-dotfiles
 /QOpenSys/etc/ibmi-dotfiles
 
 %changelog
-# let skip this for now
+* Sun Jun 14 2020 Joshua Hall <josh@sobo.red> - 1.0-ibmi-dotfiles
+- Support git bash completion and prompt
+

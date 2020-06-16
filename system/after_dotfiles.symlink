@@ -1,0 +1,6 @@
+# .after_dotfiles
+# vim:syntax=sh
+
+. /QOpenSys/etc/ibmi-dotfiles/git-completion.bash
+. /QOpenSys/etc/ibmi-dotfiles/git-prompt.sh
+

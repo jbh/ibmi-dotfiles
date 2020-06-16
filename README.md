@@ -12,7 +12,7 @@ Use your favorite text editor and create the file `/QOpenSys/etc/yum/repos.d/sob
 ```
 [sobored]
 name=sobored
-baseurl=http://rpms.sobo.red/ibmi/ppc64/
+baseurl=http://rpms.sobo.red/ibmi/
 enabled=1
 gpgcheck=0
 ```
@@ -46,3 +46,17 @@ Please use the full path here. Relative paths are untested.
 ```
 ibmi-dotfiles --install-path /desired/install/path
 ```
+
+## Note for those that used beta versions
+
+> Please note that the repo URL has changed: `http://rpms.sobo.red/ibmi/`.
+This must be updated in `/QOpenSys/etc/yum/repos.d/sobored.repo`
+
+Since I've changed the architecture to noarch, you'll probably have to:
+
+```
+yum clean metadata
+yum remove ibmi-dotfiles
+yum install ibmi-dotfiles
+```
+
