@@ -1,8 +1,8 @@
 # .history
 # vim:syntax=sh
 
-# Unlimited history
-export HISTSIZE=1
+# Huge history
+export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 
 # append to the history file, don't overwrite it
