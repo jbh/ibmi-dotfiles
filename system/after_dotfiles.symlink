@@ -1,0 +1,3 @@
+. /QOpenSys/etc/ibmi-dotfiles/git-completion.bash
+. /QOpenSys/etc/ibmi-dotfiles/git-prompt.sh
+
