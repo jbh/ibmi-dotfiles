@@ -43,6 +43,8 @@ ibmi-dotfiles
 
 ### Copy IBM i Dotfiles to specific directory.
 
+> KNOWN BUG: The user running the command becomes the owner of these dotfiles in the install path. Plan is to update this to take a username instead of a path, install in their home directory, and set them as owner.
+
 Please use the full path here. Relative paths are untested.
 
 ```
