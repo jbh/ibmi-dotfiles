@@ -7,14 +7,16 @@ These dotfiles require that the
 ## IBM i Dotfiles Installation
 
 ### Add SoBored RPM Repo to yum
-Use your favorite text editor and create the file `/QOpenSys/etc/yum/repos.d/sobored.repo` with these contents:
+Make sure to have `yum-utils` isntalled in order to run `yum-config-manager`:
 
 ```
-[sobored]
-name=sobored
-baseurl=http://rpms.sobo.red/ibmi/
-enabled=1
-gpgcheck=0
+yum install yum-utils
+```
+
+Then:
+
+```
+yum-config-manager --add-repo http://rpms.sobo.red/ibmi/
 ```
 
 Just to be safe, make sure you clean your metadata:
