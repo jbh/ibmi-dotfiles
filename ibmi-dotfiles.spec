@@ -1,6 +1,6 @@
 %define name           ibmi-dotfiles
 %define release        0
-%define version        1.0
+%define version        1.1
 %define git_completion https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 %define git_prompt     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
@@ -33,6 +33,8 @@ cp -r ./* %{buildroot}/QOpenSys/etc/ibmi-dotfiles
 /QOpenSys/etc/ibmi-dotfiles
 
 %changelog
+* Wed Jun 17 2020 Joshua Hall <josh@sobo.red> - 1.1-ibmi-dotfiles
+- Stopped modifying etc to solve permission issues
 * Sun Jun 14 2020 Joshua Hall <josh@sobo.red> - 1.0-ibmi-dotfiles
 - Support git bash completion and prompt
 

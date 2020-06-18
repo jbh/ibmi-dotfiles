@@ -54,26 +54,19 @@ fail () {
     exit
 }
 
-setup_gitconfig () {
-    if ! [[ -f "${DOTFILES_ROOT}git/gitconfig.symlink" ]]
-        then
-        info 'setup gitconfig'
+install_gitconfig () {
+    config_source="${DOTFILES_ROOT}/git/gitconfig.symlink.example"
+    info 'setup gitconfig'
 
-        user ' - What is your github author name?'
-        read -e git_authorname
-        user ' - What is your github author email?'
-        read -e git_authoremail
+    user ' - What is your github author name?'
+    read -e git_authorname
+    user ' - What is your github author email?'
+    read -e git_authoremail
 
-        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" \
-        "${DOTFILES_ROOT}/git/gitconfig.symlink.example" > "${DOTFILES_ROOT}/git/gitconfig.symlink"
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" \
+    $config_source > $1
 
-        success 'gitconfig'
-    fi
-}
-
-link_files () {
-    ln -s $1 $2
-    success "linked $1 to $2"
+    success "copied $1 to $2"
 }
 
 copy_files () {
@@ -90,17 +83,18 @@ install_dotfiles () {
 
     for source in `/QOpenSys/pkgs/bin/find ${DOTFILES_ROOT} -maxdepth 2 -name \*.symlink`
     do
-        dest="${install_path}/.`basename \"${source%.*}\"`"
+        dest_file=".`basename \"${source%.*}\"`"
+        dest="${install_path}/${dest_file}"
 
         if [[ -f ${dest} ]] || [[ -d ${dest} ]]
-            then
+        then
 
             overwrite=false
             backup=false
             skip=false
 
             if [[ "$overwrite_all" == "false" ]] && [[ "$backup_all" == "false" ]] && [[ "$skip_all" == "false" ]]
-                then
+            then
                 user "File already exists: `basename ${source}`, what do you want to do?
                 [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
                 read -n 1 action
@@ -124,32 +118,41 @@ install_dotfiles () {
             fi
 
             if [[ "$overwrite" == "true" ]] || [[ "$overwrite_all" == "true" ]]
-                then
+            then
                 rm -rf ${dest}
                 success "removed ${dest}"
             fi
 
             if [[ "$backup" == "true" ]] || [[ "$backup_all" == "true" ]]
-                then
+            then
                 mv ${dest} ${dest}\.backup
                 success "moved ${dest} to ${dest}.backup"
             fi
 
             if [[ "$skip" == "false" ]] && [[ "$skip_all" == "false" ]]
+            then
+            if [[ "$dest_file" == ".gitconfig" ]]
                 then
-                copy_files ${source} ${dest}
+                    install_gitconfig ${dest}
+                else
+                    copy_files ${source} ${dest}
+                fi
             else
                 success "skipped ${source}"
             fi
 
         else
-            copy_files ${source} ${dest}
+            if [[ "$dest_file" == ".gitconfig" ]]
+            then
+                install_gitconfig ${dest}
+            else
+                copy_files ${source} ${dest}
+            fi
         fi
 
     done
 }
 
-setup_gitconfig
 install_dotfiles
 
 echo ''
