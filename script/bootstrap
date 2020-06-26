@@ -55,7 +55,7 @@ fail () {
 }
 
 install_gitconfig () {
-    config_source="${DOTFILES_ROOT}/git/gitconfig.symlink.example"
+    config_source="${DOTFILES_ROOT}/git/gitconfig.symlink"
     info 'setup gitconfig'
 
     user ' - What is your github author name?'
@@ -66,7 +66,7 @@ install_gitconfig () {
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" \
     $config_source > $1
 
-    success "copied $1 to $2"
+    success "copied $config_source to $1"
 }
 
 copy_files () {
@@ -81,7 +81,7 @@ install_dotfiles () {
     backup_all=false
     skip_all=false
 
-    for source in `/QOpenSys/pkgs/bin/find ${DOTFILES_ROOT} -maxdepth 2 -name \*.symlink`
+    for source in `/QOpenSys/pkgs/bin/find ${DOTFILES_ROOT} -maxdepth 2 -name \*.symlink*`
     do
         dest_file=".`basename \"${source%.*}\"`"
         dest="${install_path}/${dest_file}"
