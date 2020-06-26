@@ -1,6 +1,6 @@
 %define name           ibmi-dotfiles
 %define release        0
-%define version        1.2.0
+%define version        1.3.0
 %define git_completion https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 %define git_prompt     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
