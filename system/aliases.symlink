@@ -2,7 +2,7 @@
 # vim:syntax=sh
 
 # Reload bash aliases
-alias reload="source ~/.profile"
+alias reload="source ~/.bash_profile"
 
 # enable color support of ls and also add handy aliases
 if [[ -x /QOpenSys/pkgs/bin/dircolors ]]; then
