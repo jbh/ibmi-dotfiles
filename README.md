@@ -16,7 +16,7 @@ and will not effect anyone else on the system.**
 This software requires that the
 [IBM i Open Source Environment](https://sobo.red/ibmi-rpms) (yum) be installed.
 
-## IBM i Dotfiles Installation
+## Installation
 
 ### Add SoBored RPM Repo to yum
 Make sure to have `yum-utils` isntalled in order to run `yum-config-manager`:
@@ -43,7 +43,7 @@ yum clean metadata
 yum install ibmi-dotfiles
 ```
 
-## IBM i Dotfiles Usage
+## Usage
 
 `ibmi-dotfiles` is used from the command line. BASH suggested, as these dotfiles are configured for BASH.
 
