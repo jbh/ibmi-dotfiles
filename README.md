@@ -13,7 +13,7 @@ for your user. **These dotfiles are installed in your home directory
 and will not effect anyone else on the system.**
 
 ## Requirements
-These dotfiles require that the
+This software requires that the
 [IBM i Open Source Environment](https://sobo.red/ibmi-rpms) (yum) be installed.
 
 ## IBM i Dotfiles Installation
