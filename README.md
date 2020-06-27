@@ -45,13 +45,17 @@ yum install ibmi-dotfiles
 
 ## IBM i Dotfiles Usage
 
-`ibmi-dotfiles` are used from the command line. BASH suggested, as these dotfiles are configured for BASH.
+`ibmi-dotfiles` is used from the command line. BASH suggested, as these dotfiles are configured for BASH.
 
 ### Copy IBM i Dotfiles to current user's home directory.
 
 ```
 ibmi-dotfiles
 ```
+
+> Be sure to logout and log back in for the dotfiles to take effect. The installed dotfiles
+come with a helpful alias, `reload`, that you can use after logging in again to reload your
+dotfiles after editing them instead of having to logout/login each time.
 
 ## Note for those that used beta versions
 
