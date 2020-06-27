@@ -11,7 +11,6 @@
 [alias]
         co = checkout
         count   = !git shortlog -sn
-        co = checkout
         ci = commit
         st = status -sb
         br = branch
