@@ -14,7 +14,8 @@ and will not effect anyone else on the system.**
 
 ## Requirements
 This software requires that the
-[IBM i Open Source Environment](https://sobo.red/ibmi-rpms) (yum) be installed.
+[IBM i Open Source Environment](https://bitbucket.org/ibmi/opensource/src/master/docs/yum/#markdown-header-installation)
+(yum) be installed.
 
 ## Installation
 
