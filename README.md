@@ -214,8 +214,8 @@ Some features included from `ibmi-dotfiles` are:
 
 ## Contributing
 
-Feedback and contributions are welcome. If you think any features should be added,
-please create an
+Feedback and contributions are welcome. If you find any bugs or think any features
+should be added, please create an
 [issue](https://github.com/jbh/ibmi-dotfiles/issues/new).
 
 If you want to contribute code, please follow standard forking and pull
