@@ -104,7 +104,113 @@ With these default dotfiles, the prompt will show the current branch name and it
 [Learn more](https://digitalfortress.tech/tutorial/setting-up-git-prompt-step-by-step/)
 about what you can do with your git prompt.
 
-### BASH
+### [BASH](system)
+
+The BASH environment on IBM i comes unconfigured by default, which is the motivation
+behind `ibmi-dotfiles` and the default dotfiles it installs. The default dotfiles
+installed by `ibmi-dotfiles` are meant to be nearly barebones and a jumping
+off point. There's a lot one can do with dotfiles, and below are some of the
+key features that come with what is installed by `ibmi-dotfiles`.
+
+#### [.aliases](system/aliases.symlink)
+
+Aliases on command line are just shortcuts for other commands.
+
+`ibmi-dotfiles` aliases:
+
+- `reload` is short for `source ~/.bash_profile`, which will reload your dotfiles
+- `ls`, `dir`, `vdir`, `grep`, `fgrep`, and `egrep` are all aliases with `--color=auto`
+included, which will use dircolors to color directories, symlinks, files, etc in the
+output list
+- `ll` is short for `ls -alF`
+- `la` is short for `ls -A`
+- `l` is short for `ls -CF`
+- `..` is short for `cd ..`
+- `...` is short for `cd ../..`
+- `....` is short for `cd ../../..` and so on and so on for this alias.
+
+#### [.functions](system/functions.symlink)
+
+Functions, when defined in dotfiles and sourced in BASH, can be treated as simple
+scripts. For example, `mkcdr` will take an option of a path, create it, and cd
+to it.
+
+`ibmi-dtofiles` functions:
+
+- `mkcdr <path>` will create the path defined and cd to it
+- `extract <zip>.[tar.bz2,tar.gz,bz2,rar,gz,tar,tbz2,tgz,zip,Z,7z]` will unpack nearly
+any zip
+- `h <path>` will go to a path relative to the home directory
+- `d <path>` will go to a path relative to the development directory, currently set to
+`~/Development` and can be changed
+
+#### [.history](system/history.symlink)
+
+The default history is small. `ibmi-dotfiles` defines a much larger history
+and makes sure history is appending and not overwriting, so the history
+will include many commands over a long period of time.
+
+#### [.path](system/path.symlink)
+
+`ibmi-dotfiles` makes sure to include anything it can in the $PATH, so you can have
+access to `zendphp7`, `QOpenSys`, and other binaries. `~/.local/bin` is included in
+the path, and this is a nice place to include custom scripts you've written and would
+like to run conveniently through command line.
+
+#### [.prompt](system/prompt.symlink)
+
+Your BASH prompt is what appears before every command that your write. Most systems
+come with a useful prompt that gives information about your user and the system
+you're using. The default one on IBM i appears like so:
+
+```
+bash4.4$
+```
+
+While good enough, this doesn't tell us much. `ibmi-dotfiles` will make your prompt
+appears like so:
+
+```
+username@hostname:current_dir (git-branch-if-in-git-repo)$
+```
+
+Or, with actual values:
+
+```
+josh@DEVLPAR:git_project (master)$
+```
+
+You can do a lot with your prompt.
+[Learn more](https://www.maketecheasier.com/8-useful-and-interesting-bash-prompts/).
+
+#### [.vars](system/vars.symlink)
+
+This is where you should put all your environment variables. For now, there are
+a few included in the inital install, like `JAVA_HOME`, `TERM`, and `PAGER`.
+
+#### [.inputrc](system/inputrc.symlink)
+
+The inputrc is usually included under `/etc/inputrc` on most systems
+and doesn't require any customization. IBM i does not have this yet,
+so `ibmi-dotfiles` includes a default one in your home directory.
+This will fix some bugs, like the home/end/delete keys not working
+on command line.
+
+### [Vim](system/vimrc.symlink)
+
+Vim is a powerful text editor, especially when you start customizing it.
+Some features included from `ibmi-dotfiles` are:
+
+- Fixed backspace
+- Relative line numbers
+- `jk` as a shortcut for `esc`
+
+#### [Terminal size and globstar](system/before_dotfiles.symlink)
+
+- `shopt -s checkwinsize` will check the window size each resize and reset $LINES and $COLUMNS
+accordingly
+- `shopt -s globstar` will allow us use `**` in path names to expand the path and check all
+directories/subdirectories
 
 
 ## Note for those that used beta versions
