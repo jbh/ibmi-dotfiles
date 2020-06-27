@@ -212,6 +212,16 @@ Some features included from `ibmi-dotfiles` are:
 - Relative line numbers
 - `jk` as a shortcut for `esc`
 
+## Contributing
+
+Contributions are welcome. If you think any features should be added,
+please create an
+[issue](https://github.com/jbh/ibmi-dotfiles/issues/new). Feedback is welcome.
+
+If you want to contribute code, please follow standard forking and pull
+requests. That is, create a fork, make a branch, commit your changes
+to that branch, and submit a PR between this repository and your branch.
+
 ## Note for those that used beta versions
 
 > Please note that the repo URL has changed: `http://rpms.sobo.red/ibmi/`.
