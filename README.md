@@ -168,7 +168,7 @@ bash4.4$
 ```
 
 While good enough, this doesn't tell us much. `ibmi-dotfiles` will make your prompt
-appears like so:
+appear like so:
 
 ```
 username@hostname:current_dir (git-branch-if-in-git-repo)$
@@ -177,7 +177,7 @@ username@hostname:current_dir (git-branch-if-in-git-repo)$
 Or, with actual values:
 
 ```
-josh@DEVLPAR:git_project (master)$
+josh@DEVLPAR:project-dir (master)$
 ```
 
 You can do a lot with your prompt.
@@ -196,6 +196,13 @@ so `ibmi-dotfiles` includes a default one in your home directory.
 This will fix some bugs, like the home/end/delete keys not working
 on command line.
 
+#### [Terminal size and globstar](system/before_dotfiles.symlink)
+
+- `shopt -s checkwinsize` will check the window size each resize and reset $LINES and $COLUMNS
+accordingly
+- `shopt -s globstar` will allow us use `**` in path names to expand the path and check all
+directories/subdirectories
+
 ### [Vim](system/vimrc.symlink)
 
 Vim is a powerful text editor, especially when you start customizing it.
@@ -204,14 +211,6 @@ Some features included from `ibmi-dotfiles` are:
 - Fixed backspace
 - Relative line numbers
 - `jk` as a shortcut for `esc`
-
-#### [Terminal size and globstar](system/before_dotfiles.symlink)
-
-- `shopt -s checkwinsize` will check the window size each resize and reset $LINES and $COLUMNS
-accordingly
-- `shopt -s globstar` will allow us use `**` in path names to expand the path and check all
-directories/subdirectories
-
 
 ## Note for those that used beta versions
 
