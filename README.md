@@ -1,5 +1,17 @@
 # IBM i Dotfiles
 
+IBM i Dotfiles is a command line tool used to create configuration files,
+otherwise known as dotfiles, in the home directory of your user on IBM i.
+Dotfiles are used to configure BASH, vim, git, and many other command
+line tools. You can create a beautiful BASH prompt, alias commands,
+build helpful functions, set environment variables, customize vim,
+and the list goes on and on.
+
+Use these dotfiles as a jumping off point. Customize them to your heart's
+desire to create a comfortable and efficient BASH environment on IBM i
+for your user. **These dotfiles are installed in your home directory
+and will not effect anyone else on the system.**
+
 ## Requirements
 These dotfiles require that the
 [IBM i Open Source Environment](https://sobo.red/ibmi-rpms) (yum) be installed.
