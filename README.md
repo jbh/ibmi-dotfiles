@@ -160,7 +160,7 @@ like to run conveniently through command line.
 
 #### [.prompt](system/prompt.symlink)
 
-Your BASH prompt is what appears before every command that your write. Most systems
+Your BASH prompt is what appears before every command you write. Most systems
 come with a useful prompt that gives information about your user and the system
 you're using. The default one on IBM i appears like so:
 
