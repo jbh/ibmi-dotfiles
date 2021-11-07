@@ -22,6 +22,10 @@ function _source_if_exists {
 #     $- = hBc
 #
 
+
+# User-specific vars and paths (needed for both interactive and non-interactive shells
+_source_if_exists "${HOME}/.vars" "${HOME}/.path" ;
+
 case $- in *i* )
 
     # Source global definitions
@@ -36,8 +40,8 @@ case $- in *i* )
     # Set the PS1 prompt for interactive shells
     _source_if_exists "${HOME}/.prompt" ;
 
-    # User-specific aliases, functions, vars and paths
-    _source_if_exists "${HOME}/.aliases" "${HOME}/.functions" "${HOME}/.vars" "${HOME}/.path" ;
+    # User-specific aliases and functions
+    _source_if_exists "${HOME}/.aliases" "${HOME}/.functions";
 
     # After everything else
     _source_if_exists "${HOME}/.after_dotfiles" ;
