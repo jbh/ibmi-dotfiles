@@ -1,5 +1,7 @@
 # IBM i Dotfiles
 
+<img src="./dotFiles.png" align="right">
+
 IBM i Dotfiles is a command line tool used to create configuration files,
 otherwise known as dotfiles, in the home directory of your user on IBM i.
 Dotfiles are used to configure BASH, vim, git, and many other command
@@ -70,7 +72,7 @@ some helpful aliases like `co`, `ci`, `st`, `br`, `hist`, and others. I particul
 `hist` alias, as it prints a much prettier and understandable history of commits.
 
 ```bash
-git co <branch-name>       # git checkout <branch-name> 
+git co <branch-name>       # git checkout <branch-name>
 git co -b <branch-name>    # git checkout -b <branch-name>
 git ci -m "Commit message" # git commit -m "Commit message"
 git st                     # git status -sb
