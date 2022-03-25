@@ -11,10 +11,12 @@ if [[ -n "$BASH_VERSION" ]] || [[ "$0" == *bash ]] ; then
 fi
 
 
-# Print a shell banner for login shells
-echo ; bash --version ; echo ;
+if [[ "$-" == *i* ]]; then
+    # Print a shell banner for login shells
+    echo ; bash --version ; echo ;
 
-# Print .dotfiles version
-[[ -f "${HOME}/.dotfiles/VERSION" ]] \
-&& echo "This shell has been enhanced by ibmi-dotfiles version $(cat $HOME/.dotfiles/VERSION)" \
-&& echo
+    # Print .dotfiles version
+    [[ -f "${HOME}/.dotfiles/VERSION" ]] \
+    && echo "This shell has been enhanced by ibmi-dotfiles version $(cat $HOME/.dotfiles/VERSION)" \
+    && echo
+fi
